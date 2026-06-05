@@ -1,0 +1,432 @@
+==================================================
+Date: 2026-01-09 15:46:53.473904
+Agent: Distributed | Target: final_alive
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8926
+  p-value        = 6.448e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.7958
+  df:      99
+  p-value: 0.00311
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:53.630104
+Agent: Distributed | Target: total_health
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8475
+  p-value        = 9.622e-09
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.6939
+  df:      99
+  p-value: 0.004148
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:53.802096
+Agent: Distributed | Target: transport_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8755
+  p-value        = 1.175e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.1723
+  df:      99
+  p-value: 0.01611
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:53.974876
+Agent: Distributed | Target: road_clear_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8442
+  p-value        = 7.307e-09
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 1.7637
+  df:      99
+  p-value: 0.04043
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:54.160089
+Agent: Distributed | Target: buried_rescue_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8824
+  p-value        = 2.302e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 4.2298
+  df:      99
+  p-value: 2.612e-05
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:54.326658
+Agent: Distributed | Target: dist_per_rescue
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8304
+  p-value        = 2.387e-09
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 0.2476
+  df:      99
+  p-value: 0.4025
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:54.48672
+Agent: Distributed | Target: dist_per_transport
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8943
+  p-value        = 7.731e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 0.6648
+  df:      99
+  p-value: 0.2539
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:54.652949
+Agent: Distributed | Target: total_buried_time
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.9035
+  p-value        = 2.067e-06
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 1.524
+  df:      99
+  p-value: 0.06535
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:54.834314
+Agent: Distributed | Target: rsl21_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8163
+  p-value        = 8.074e-10
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 3.3405
+  df:      99
+  p-value: 0.0005902
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:54.995989
+Agent: Concentration | Target: final_alive
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8839
+  p-value        = 2.668e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.5813
+  df:      99
+  p-value: 0.005654
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:55.159664
+Agent: Concentration | Target: total_health
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8498
+  p-value        = 1.168e-08
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.6647
+  df:      99
+  p-value: 0.004499
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:55.317914
+Agent: Concentration | Target: transport_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.9263
+  p-value        = 3.102e-05
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 1.5189
+  df:      99
+  p-value: 0.06599
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:55.480518
+Agent: Concentration | Target: road_clear_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8904
+  p-value        = 5.125e-07
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 1.4707
+  df:      99
+  p-value: 0.07228
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:55.636565
+Agent: Concentration | Target: buried_rescue_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8272
+  p-value        = 1.863e-09
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 2.1381
+  df:      99
+  p-value: 0.01748
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+
+==================================================
+Date: 2026-01-09 15:46:55.803748
+Agent: Concentration | Target: dist_per_rescue
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8334
+  p-value        = 3.027e-09
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: -1.6353
+  df:      99
+  p-value: 0.9474
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:55.970311
+Agent: Concentration | Target: dist_per_transport
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.9397
+  p-value        = 0.0001858
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: -0.485
+  df:      99
+  p-value: 0.6856
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:56.12782
+Agent: Concentration | Target: total_buried_time
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.9047
+  p-value        = 2.374e-06
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 1.4366
+  df:      99
+  p-value: 0.07699
+
+  [Conclusion]
+  -> NO Significant Improvement
+
+==================================================
+Date: 2026-01-09 15:46:56.311055
+Agent: Concentration | Target: rsl21_rate
+==================================================
+
+--- 1. Normality Check of Difference (Improvement) ---
+  Target Variable: Diff = (Old_SqError - All_SqError)
+  (p < 0.05 indicates non-normal distribution)
+
+  Shapiro-Wilk W = 0.8183
+  p-value        = 9.388e-10
+
+  [Judgement]
+  -> Diff is NOT Normal. (t-test is unreliable, use Wilcoxon)
+
+--- 2. Paired t-test Result ---
+  Hypothesis: Mean(Diff) > 0
+  t-value: 3.2817
+  df:      99
+  p-value: 0.000713
+
+  [Conclusion]
+  -> Significant Improvement (p < 0.05)
+

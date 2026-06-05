@@ -1,0 +1,6 @@
+Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
+assortativity,30487434.00122456,New_Features,dist_per_transport,7005536.270026294,0.20061339430192526,136940667.31688574,Concentration
+rosval_mean,23482650.102948144,New_Features,dist_per_transport,7005536.270026294,0.20061339430192526,136940667.31688574,Concentration
+degree_sd,-16138649.318851242,New_Features,dist_per_transport,7005536.270026294,0.20061339430192526,136940667.31688574,Concentration
+d_value,10868105.231223952,New_Features,dist_per_transport,7005536.270026294,0.20061339430192526,136940667.31688574,Concentration
+moran_i_degree,3711689.5019446155,New_Features,dist_per_transport,7005536.270026294,0.20061339430192526,136940667.31688574,Concentration

@@ -1,0 +1,5 @@
+Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
+d_value,25093309.83456535,New_Features,dist_per_rescue,1946260.2654784971,0.6226493322828353,27334607.053080983,Distributed
+rosval_mean,11655750.70433146,New_Features,dist_per_rescue,1946260.2654784971,0.6226493322828353,27334607.053080983,Distributed
+degree_sd,7854435.0199491,New_Features,dist_per_rescue,1946260.2654784971,0.6226493322828353,27334607.053080983,Distributed
+moran_i_degree,-7616896.662806933,New_Features,dist_per_rescue,1946260.2654784971,0.6226493322828353,27334607.053080983,Distributed
