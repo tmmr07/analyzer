@@ -7,23 +7,31 @@ analyzerは，ロボカップレスキューシミュレーション（RRS）に
 
 # ディレクトリおよびファイルの概要
 ### 1. dataディレクトリ
-このディレクトリには，分析に用いるデータを格納します．本リポジトリのディレクトリに格納されている各サンプルデータの詳細は以下の通りです．
+このディレクトリには，分析に用いるデータを格納します．本リポジトリには，実際に取得した値ではなく，Numbers上でランダムに生成した値がまとめられているサンプルデータを格納しています．本リポジトリのディレクトリに格納されている各サンプルデータの詳細は以下の通りです．
 
-- `concentration_score_average_per_map.csv`
+- `concentration_score_average_per_map_sample.csv`
 
 	- 集中救助戦略における，地図ごとのシミュレーション結果の平均値（30シナリオの平均値）がまとめられているCSVファイルです．
 
-- `distributed_score_average_per_map.csv`
+- `distributed_score_average_per_map_sample.csv`
 	- 分散救助戦略における， 地図ごとのシミュレーション結果の平均値（30シナリオの平均値）がまとめられているCSVファイルです．
 
-- `new_features_all.csv`
+- `new_features_all_sample.csv`
 	- 各地図における，新指標の値がまとめられているCSVファイルです．選定前のデータのため，卒論では扱っていない指標のデータも含まれています．
 
-- `old_features.csv`
+- `old_features_sample.csv`
 	- 各地図における，旧指標の値がまとめられているCSVファイルです．選定前のデータのため，卒論では扱っていない指標のデータも含まれています．また，過去の先輩が算出したデータを抜粋してきたものになります．
 
-- `rsl21_rate_comparison.csv`
+- `rsl21_rate_comparison_sample.csv`
 	- 集中救助戦略と分散救助戦略のスコア維持率を比較した結果がまとめられているCSVファイルです．"abs_diff"にはスコア維持率の差の絶対値，"higher_agent"にはスコア維持率が高かった方の戦略名（Concentration or Distributed）が示されています．
 
-- `simulation_scores_all.csv`
+- `simulation_scores_all_sample.csv`
 	- 各地図ごと，かつ各シナリオごと，かつ各エージェントごとのシミュレーション結果がまとめられているCSVファイルです．
+
+### 2. `main.R`
+
+`main.R`では，データの整形および各分析関数の実行をおこないます．
+
+データの整形では，`/data`ディレクトリに格納されているデータファイルを読み込み，各分析関数で使用できる形に整形します．
+
+各分析関数の実行では，`/R`ディレクトリに格納されているファイルを読み込み，任意の分析関数を実行します．
