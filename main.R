@@ -6,13 +6,13 @@ library(readr)
 
 # 各関数の読み込み
 source("./R/preprocess.R")
-source("./R/Lasso.R")
-source("./R/wilcox_test.R")
-source("./R/shap.R")
 
 # 各データファイルのパス
+# シミュレーション結果のデータ
 data_simulation <- "./data/simulation_scores.csv"
+# 旧指標群データ
 data_old_features <- "./data/old_features.csv"
+# 新指標群データ
 data_new_features <- "./data/new_features_d_road_and_building.csv"
 
 # 分析結果の出力ファイルパス
@@ -21,7 +21,9 @@ data_new_features <- "./data/new_features_d_road_and_building.csv"
 results_list <- preprocess(data_simulation)
 
 # 各エージェントのデータを取り出す
+# 分散救助戦略
 (distributed <- results_list$distributed)
+# 集中救助戦略
 (concentration <- results_list$concentration2_cluster_9_group_none)
 
 # 選定した道路指標群
@@ -49,11 +51,12 @@ road_features <- all_features |> dplyr::select(Map, all_of(road_target_cols))
 # 総合指標データの作成
 all_features <- left_join(road_features, building_features, by = "Map")
 
+# 標準化をおこなう関数を定義
 standardize_cols <- function(x) {
   as.numeric(scale(x))
 }
 
-# 各データフレームを標準化
+# 作成した関数を用いて，各データフレームを標準化
 building_features <- building_features |> 
   mutate(across(where(is.numeric), standardize_cols))
 
@@ -63,67 +66,71 @@ road_features <- road_features |>
 all_features <- all_features |> 
   mutate(across(where(is.numeric), standardize_cols))
 
+# 特徴指標データの保存先ディレクトリを作成
 output_dir <- "./out/feature_sets"
 dir.create(output_dir, showWarnings = FALSE)
 
-
+# 各特徴指標データをCSVファイルとして保存
+# 旧指標群
 write_csv(
   building_features,
   file.path(output_dir, "features_old.csv")
 )
-
+# 新指標群
 write_csv(
   road_features,
   file.path(output_dir, "features_new.csv")
 )
-
+# 総合指標群
 write_csv(
   all_features,
   file.path(output_dir, "features_all.csv")
 )
 
 
-# 説明変数のパターンをリストにまとめる
+# 説明変数データをまとめたリストを作成
+# 各関数を各説明変数データごとにループして実行するため
 feature_sets <- list(
   "Old_Features" = building_features,
   "New_Features" = road_features,
   "All_Features" = all_features
 )
 
-# 目的変数のデータセットをリストにまとめる
+# 目的変数のデータをまとめたリストを作成
 target_datasets <- list(
   "Distributed" = distributed,
   "Concentration" = concentration
 )
 
+# 分析結果を格納するためのからのデータフレームを作成
 all_results <- data.frame()
 
-# --- 保存先のベースディレクトリ ---
+# 分析結果を保存するディレクトリのパスを設定
 output_base_dir <- "./out"
 
-# --- 実行＆保存ループ ---
-
-# 1. エージェントごとのループ (Distributed / Concentration)
+# 分析の実行
+# エージェントごとにループ
 for (target_set_name in names(target_datasets)) {
   
+  # 現在分析中のエージェント名を表示
   print(paste("Processing Agent:", target_set_name, "..."))
+  # 分析対象のエージェントのデータフレームを取得
   current_target_df <- target_datasets[[target_set_name]]
   
   # 数値列のみ抽出
   numeric_cols <- current_target_df |> 
     dplyr::select(where(is.numeric)) |> 
     colnames()
-  target_columns <- setdiff(numeric_cols, "Map")
   
-  # 2. 目的変数ごとのループ (例: score, time 等)
+  # 目的変数ごとにループ
   for (target_col in target_columns) {
     
-    # 3. 説明変数群ごとのループ (Old, New, All)
+    # 説明変数ごとにループ
     for (feat_set_name in names(feature_sets)) {
       
       current_feature_df <- feature_sets[[feat_set_name]]
       
-      # 分析実行
+      # Lasso回帰
       res <- run_lasso_analysis(
         target_df = current_target_df, 
         feature_df = current_feature_df, 
@@ -131,58 +138,56 @@ for (target_set_name in names(target_datasets)) {
         feature_set_name = feat_set_name
       )
       
-      # 結果が存在する場合のみ保存処理を行う
+      # 結果が存在する場合のみ保存処理
       if (!is.null(res)) {
         
-        # エージェント名の列を追加（念のためデータ内にも保持）
+        # エージェント名の列を追加
         res$AgentType <- target_set_name
         
-        # --- 保存先パスの構築 ---
+        # 分析結果を保存するディレクトリを指定
         # 構造: ./out/{Agent}/{Target}/{FeatureSet}/result.csv
-        save_dir <- file.path(output_base_dir, target_set_name, target_col, feat_set_name)
+        save_dir_lasso <- file.path(output_base_dir, "LASSO", target_set_name, target_col, feat_set_name)
         
-        # ディレクトリを再帰的に作成 (親フォルダがない場合も自動で作る)
-        if (!dir.exists(save_dir)) {
-          dir.create(save_dir, recursive = TRUE)
+        # ディレクトリを作成
+        if (!dir.exists(save_dir_lasso)) {
+          dir.create(save_dir_lasso, recursive = TRUE)
         }
         
         # ファイルパスの作成
-        file_path <- file.path(save_dir, "result.csv")
+        file_path <- file.path(save_dir_lasso, "result.csv")
         
         # 係数の絶対値順に並べ替え
         res_sorted <- res |> arrange(desc(abs(Coefficient)))
         
-        # CSV保存
+        # CSVで保存
         write_csv(res_sorted, file_path)
         
-        # --- 2. SHAP分析の実行 (★追加部分) ---
-        
-        # Lassoモデルはrun_lasso_analysis内で消えているため、SHAP用にデータを再構築してモデルを作る
-        
+        # SHAP分析
         if (feat_set_name == "All_Features") {
-          # データの結合と整形（run_lasso_analysisと同等の処理）
+          # データの結合と整形
           data_merged <- inner_join(
             current_target_df |> dplyr::select(Map, all_of(target_col)),
             current_feature_df,
             by = "Map"
           ) |> na.omit()
           
-          # SHAP用データフレーム（Mapと目的変数を除去した説明変数のみ）
+          # SHAP分析用のデータフレームを作成（Map列と目的変数の列を削除）
           feature_data_for_shap <- data_merged |> dplyr::select(-Map, -all_of(target_col))
           
-          # モデル学習用データ
+          # モデル学習用データの作成
           x_matrix <- as.matrix(feature_data_for_shap)
           y_vec <- as.numeric(data_merged[[target_col]])
+
+          save_dir_shap <- file.path(output_base_dir, "LASSO", target_set_name, target_col, feat_set_name)
           
-          # Lassoモデルの再作成
-          # ※ set.seed(123)を指定することで、さっきの分析と全く同じモデルになる
+          # 上記でやったLasso回帰と同じモデルを作成するため，シード値を指定してLasso回帰モデルを作成
           set.seed(123)
           cv_fit_for_shap <- cv.glmnet(x_matrix, y_vec, alpha = 1)
           
           # SHAP結果の保存先: ./out/{Agent}/{Target}/{FeatureSet}/SHAP/
-          shap_out_dir <- file.path(save_dir, "SHAP")
+          shap_out_dir <- file.path(save_dir_shap, "SHAP")
           
-          # 関数の実行
+          # SHAP分析の実行
           analyze_shap_lasso(
             lasso_model  = cv_fit_for_shap,
             feature_data = feature_data_for_shap,
@@ -195,49 +200,3 @@ for (target_set_name in names(target_datasets)) {
     }
   }
 }
-
-
-
-
-# 結果を貯めるデータフレーム
-test_results_summary <- data.frame()
-
-# 1. エージェントごとのループ
-for (target_set_name in names(target_datasets)) {
-  
-  print(paste("Running Statistical Test for:", target_set_name, "..."))
-  current_target_df <- target_datasets[[target_set_name]]
-  
-  # 数値列のみ抽出
-  numeric_cols <- current_target_df |> 
-    dplyr::select(where(is.numeric)) |> 
-    colnames()
-  target_columns <- setdiff(numeric_cols, "Map")
-  
-  # 2. 目的変数ごとのループ
-  for (target_col in target_columns) {
-    
-    # --- 検定の実行 (Old vs All) ---
-    # ここでは features_sets$Old_Features と features_sets$All_Features を比較
-    res_test <- compare_models_statistical(
-      target_df = current_target_df,
-      old_feature_df = feature_sets[["Old_Features"]], # 比較対象1
-      all_feature_df = feature_sets[["All_Features"]], # 比較対象2
-      target_col = target_col,
-      agent_name = target_set_name
-    )
-    
-    # エージェント名を追加して結果リストに結合
-    res_test$AgentType <- target_set_name
-    test_results_summary <- bind_rows(test_results_summary, res_test)
-  }
-}
-
-# --- 検定結果のCSV保存 ---
-# 全エージェント・全目的変数の検定結果を1つのファイルに保存
-output_test_file <- file.path(output_base_dir, "statistical_test_results_Old_vs_All.csv")
-write_csv(test_results_summary, output_test_file)
-
-print("Statistical testing finished.")
-print(test_results_summary)
-
