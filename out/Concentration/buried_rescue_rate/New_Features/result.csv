@@ -1,8 +1,0 @@
-Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
-d_value,-7.972804224512834,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-rosval_mean,-3.9644755978792916,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-bridges_ratio,-2.964157786447417,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-degree_sd,-2.690467067107753,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-centralization_degree,0.801543406915332,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-moran_i_degree,0.7267785666940725,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration
-orientation_entropy,-0.25849102678027214,New_Features,buried_rescue_rate,0.7623446012672014,0.5979149491992503,10.017478522287655,Concentration

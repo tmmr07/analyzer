@@ -1,4 +1,0 @@
-Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
-assortativity,26125748.876591083,New_Features,dist_per_transport,12411536.92533292,0.20570036233807978,141634128.70446447,Distributed
-rosval_mean,24354436.427231885,New_Features,dist_per_transport,12411536.92533292,0.20570036233807978,141634128.70446447,Distributed
-degree_sd,-24333600.40936182,New_Features,dist_per_transport,12411536.92533292,0.20570036233807978,141634128.70446447,Distributed

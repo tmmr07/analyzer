@@ -1,6 +1,0 @@
-Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
-d_value,23603218.781843953,New_Features,dist_per_rescue,1426453.6187077698,0.574809378727518,29370963.426506832,Concentration
-rosval_mean,13043970.281798717,New_Features,dist_per_rescue,1426453.6187077698,0.574809378727518,29370963.426506832,Concentration
-degree_sd,8692393.313921893,New_Features,dist_per_rescue,1426453.6187077698,0.574809378727518,29370963.426506832,Concentration
-assortativity,-5951811.631047128,New_Features,dist_per_rescue,1426453.6187077698,0.574809378727518,29370963.426506832,Concentration
-orientation_entropy,525813.2099772925,New_Features,dist_per_rescue,1426453.6187077698,0.574809378727518,29370963.426506832,Concentration

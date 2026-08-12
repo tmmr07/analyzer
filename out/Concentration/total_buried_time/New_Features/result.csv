@@ -1,8 +1,0 @@
-Variable,Coefficient,FeatureSet,TargetVariable,Lambda,R_Squared,RMSE,AgentType
-d_value,4744.198042050974,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-moran_i_degree,-3694.4678557874913,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-degree_sd,3160.231639985881,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-rosval_mean,1729.5284033720375,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-getis_gi_degree_mean,-1095.452251028894,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-bridges_ratio,924.4552637001523,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
-centralization_degree,-851.4019492131179,New_Features,total_buried_time,651.9226223326841,0.5124758427288199,9746.529883946363,Concentration
